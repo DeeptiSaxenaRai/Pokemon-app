@@ -1,0 +1,238 @@
+/* Set the body of main page */
+body {
+  background-color: rgb(206, 206, 249);
+  font-family: sans-serif;
+  font-size: 16px;
+  color: rgb(10, 10, 48);
+  width: 100%;
+}
+/* To remove default css properties*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* :root {
+  --col-grey: #5e584e;
+  --col-blue: #22314e;
+  --col-dblue: #1e1e2c;
+  --col-dred: #4c2520;
+  --col-red: #66291f;
+} */
+
+/* To set the navbar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background: rgb(10, 10, 48);
+  padding-block: 5px;
+  color: white;
+  padding-inline: 24px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+/* To set the buttons */
+button {
+  padding: 5px 10px;
+  background-color: rgb(174, 174, 250);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+input[type="text"] {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}
+/* to design the pokemon list container */
+.poke-list {
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: auto;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 80px;
+}
+/* To set the pokemon in every card */
+.card {
+  display: flex;
+  width: 200px;
+  min-height: 200px;
+  background-color: rgb(233, 231, 125);
+  border: 1px solid rgb(43, 2, 2);
+  border-radius: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  transition: all 150ms;
+  --hover-rot: 0deg;
+  --img-hover-scale: 1;
+  --img-hover-rotX: 0deg;
+  --img-hover-rotY: 0deg;
+  --text-hover-scale: 1;
+}
+/* set default value */
+.card * {
+  transition: all 500ms ease-in;
+}
+/* set hover and active on cards */
+.card:not(.card-big):hover,
+.card:not(.card-big):active {
+  filter: brightness(90%) contrast(120%);
+  outline-color: orange;
+  --hover-rot: 360deg;
+  --img-hover-scale: -1.5;
+  --text-hover-scale: 1.5;
+  --img-hover-rotX: -360deg;
+  --img-hover-rotY: 180deg;
+  transform: scale(1.05) translate(0, -8px);
+  box-shadow: 0 0 41px 14px #aaa2003f, 0 0 8px 8px #200,
+    inset 0 0 34px 0 #0000007f;
+}
+img {
+  min-width: 70%;
+  aspect-ratio: 1;
+  transform: scale(var(--img-hover-scale)) rotateZ(var(--img-hover-rotY));
+}
+
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+/* To set display card */
+.card-big {
+  min-height: 300px;
+  color: rgb(43, 2, 2);
+  background-color: rgb(252, 251, 189);
+  border: 1px solid rgb(43, 2, 2);
+  border-radius: 5px;
+  box-shadow: 0 0 4px 4px #010, 0 0 8px 8px #100, inset 0 0 34px 0 #0000007f;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  display: flex;
+  width: 80%;
+  max-width: min(600px, 80%);
+}
+/* set display card image */
+.card > img {
+  max-width: 50%;
+  aspect-ratio: 1;
+  transform: scale(var(--img-hover-scale)) rotateZ(var(--img-hover-rotY));
+}
+/* Display card heading */
+.card-big h2 {
+  font-size: 24px;
+}
+/* Display card heading */
+.card-big h3 {
+  width: fit-content;
+  font-weight: normal;
+}
+/* Display card status  */
+.card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+/*set horizontal line*/
+.card-stats hr {
+  flex-basis: 100%;
+  border: 1px solid white;
+  border-top: none;
+}
+/* Display card heading status  */
+.card-stats h3 {
+  padding-top: 8px;
+}
+/* Display card image  */
+.card-big img {
+  min-width: 20%;
+  aspect-ratio: 1;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgb(10, 10, 48);
+  padding-inline: 8px;
+  padding-block: 5px 5px;
+  color: white;
+}
+.info *::before {
+  position: absolute;
+  content: "";
+  margin-top: -0.85rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+}
+.info .height::before {
+  content: "HEIGHT";
+}
+.info .weight::before {
+  content: "WEIGHT";
+}
+.info .xp::before {
+  content: "XP";
+}
+.types {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgb(169, 169, 241);
+  padding-inline: 8px;
+  padding-block: 12px 5px;
+  color: rgb(43, 2, 2);
+}
+.types::before {
+  position: static;
+  content: "TYPES";
+  margin: -8px 0;
+  font-size: 12px;
+  font-weight: bold;
+  color: color;
+}
+.types-small {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: rgb(10, 10, 48);
+  padding-inline: 8px;
+  padding-block: 8px;
+  color: white;
+}
+.types h4 {
+  padding: 5px;
+  font-size: 8px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.stats {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgb(10, 10, 48);
+  padding-inline: 8px;
+  padding-block: 12px 5px;
+  color: white;
+}
+.stats::before {
+  position: absolute;
+  content: "STATS";
+  margin: -8px -5.2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
