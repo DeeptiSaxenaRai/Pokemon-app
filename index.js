@@ -41,16 +41,17 @@ async function getApi(url) {
   return data;
 }
 
-// make search button function
 async function displayPokemonSearchResults(searchInput) {
   let pokemonDataSearch = searchInput.value;
+  if (!pokemonDataSearch) return; //can't work if search inputis blank
+  if (pokemonDataSearch.length < 3) return; //Set the minimum value of search input
   pokeListContainer.innerHTML = "";
-  const pokemonData =
-    pokemonDataSearch ||
-    (await getApi("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000"));
+  const pokemonData = await getApi(
+    "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000"
+  );
 
   pokemonData.results.forEach(async (pokemon) => {
-    if (pokemon.name.includes(searchInput)) {
+    if (pokemon.name.includes(searchInput.value)) {
       const pokemonDetailData = await getApi(pokemon.url);
 
       const pokeCardEl = document.createElement("div");
@@ -64,6 +65,7 @@ async function displayPokemonSearchResults(searchInput) {
         pokemonDetailData.sprites.other["official-artwork"].front_default;
 
       pokeCardEl.append(pokeCardTitle, pokeCardImage);
+      searchInput.value = ""; //clear the search input
 
       pokeCardEl.addEventListener("click", () =>
         displayPokemonDetails(pokemonDetailData)
